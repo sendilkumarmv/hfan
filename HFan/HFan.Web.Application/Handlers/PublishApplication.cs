@@ -1,6 +1,8 @@
 ﻿using HFan.Web.Application.Model;
+using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using RabbitMQ.Client;
+using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Text;
 
 namespace HFan.Web.Application.Handlers
@@ -28,4 +30,8 @@ namespace HFan.Web.Application.Handlers
             channel.BasicPublish("", "demo-queue", null, body);
         }
     }
+
+   
+
+    
 }
