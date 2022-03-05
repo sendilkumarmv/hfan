@@ -18,15 +18,16 @@ namespace HFan.Web.Application
             });
             operation.Parameters.Add(new OpenApiParameter()
             {
-                Name = "client-corrid",
+                Name = "Client-Corrid",
                 In = ParameterLocation.Header,
                 Required = true
             });
             operation.Parameters.Add(new OpenApiParameter()
             {
-                Name = "client-channel",
+                Name = "Client-Channel",
                 In = ParameterLocation.Header,
-                Required = false
+                Required = false,
+                Style = ParameterStyle.Simple
             });
         }
     }
