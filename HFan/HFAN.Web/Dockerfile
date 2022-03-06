@@ -7,17 +7,17 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY *.csproj HFan.Web.Application/
-RUN dotnet restore "HFan.Web.Application/HFan.Web.Application.csproj"
+COPY *.csproj HFAN.Web/
+RUN dotnet restore "HFAN.Web/HFAN.Web.csproj"
 
-COPY . "HFan.Web.Application/."
-WORKDIR "/src/HFan.Web.Application"
-RUN dotnet build "HFan.Web.Application.csproj" -c Release -o /app/build
+COPY . "HFAN.Web/."
+WORKDIR "/src/HFAN.Web"
+RUN dotnet build "HFAN.Web.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "HFan.Web.Application.csproj" -c Release -o /app/publish
+RUN dotnet publish "HFAN.Web.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "HFan.Web.Application.dll"]
+ENTRYPOINT ["dotnet", "HFAN.Web.dll"]

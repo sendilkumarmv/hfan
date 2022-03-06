@@ -2,15 +2,13 @@
 
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
 WORKDIR /app
-EXPOSE 80
-EXPOSE 443
+EXPOSE 81
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY *.csproj HFan.Web.Application/
+COPY ["HFan.Web.Application/HFan.Web.Application.csproj", "HFan.Web.Application/"]
 RUN dotnet restore "HFan.Web.Application/HFan.Web.Application.csproj"
-
-COPY . "HFan.Web.Application/."
+COPY . .
 WORKDIR "/src/HFan.Web.Application"
 RUN dotnet build "HFan.Web.Application.csproj" -c Release -o /app/build
 
