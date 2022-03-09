@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HFan.Web.Application", "HFan.Web.Application\HFan.Web.Application.csproj", "{A25BA424-0C8C-4256-8EB3-169367BB7D84}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HFAN.Web", "HFAN.Web\HFAN.Web.csproj", "{9A313131-3453-4455-AE15-C466253705BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HFAN.Web", "HFAN.Web\HFAN.Web.csproj", "{9A313131-3453-4455-AE15-C466253705BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

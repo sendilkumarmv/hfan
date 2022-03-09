@@ -1,7 +1,6 @@
 ﻿using HFan.Web.Application.Handlers;
 using HFan.Web.Application.Model;
 using Microsoft.AspNetCore.Mvc;
-using System.ComponentModel.DataAnnotations;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -9,10 +8,10 @@ namespace HFan.Web.Application.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ApplicationController : ControllerBase
+    public class CustomerApplicationController : ControllerBase
     {
         private readonly IPublishApplication _publishApplication;
-        public ApplicationController(IPublishApplication publishApplication)
+        public CustomerApplicationController(IPublishApplication publishApplication)
         {
             _publishApplication = publishApplication;
         }
