@@ -23,19 +23,28 @@ namespace HFan.Web.Application.Controllers
 
         // GET: api/<ApplicationController>
         [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        public IEnumerable<CustomerApplication> Get()
+        [ProducesResponseType(typeof(IEnumerable<CustomerApplication>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public ActionResult<IEnumerable<CustomerApplication>> Get()
         {
-            return _customerApplicationHandler.GetCustomerApplications();
+            try
+            {
+                var result = _customerApplicationHandler.GetCustomerApplications();
+                return Ok(result);
+            }
+            catch
+            {
+                return NoContent();
+            }
         }
 
         // GET api/<ApplicationController>/5
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        public CustomerApplication? Get(int id)
+        [ProducesResponseType(typeof(CustomerApplication), StatusCodes.Status200OK)]
+        public ActionResult<CustomerApplication> Get(int id)
         {
-            return null;
+            return NoContent();
         }
 
         // POST api/<ApplicationController>

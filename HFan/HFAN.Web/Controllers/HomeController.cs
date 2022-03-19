@@ -15,10 +15,10 @@ namespace HFAN.Web.Controllers
             _customerApplicationService = customerApplicationService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var cu = _customerApplicationService.Get();
-            return View();
+            var cu = await _customerApplicationService.Get();
+            return View(cu);
         }
 
         public IActionResult Privacy()

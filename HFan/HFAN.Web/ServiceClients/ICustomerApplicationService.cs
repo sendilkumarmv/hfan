@@ -4,7 +4,7 @@ namespace HFAN.Web.ServiceClients
 {
     public interface ICustomerApplicationService
     {
-        CustomerApplicationModel Get();
+        Task<List<CustomerApplicationModel>> Get();
         CustomerApplicationModel Get(string customerId);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using HFAN.Web.Models;
 using Microsoft.Extensions.Options;
+using System.Text.Json;
 
 namespace HFAN.Web.ServiceClients
 {
@@ -12,9 +13,20 @@ namespace HFAN.Web.ServiceClients
             client = httpClient;
             apiBaseUrl = settings.Value.EndPoints.ApplicationApiBaseUri;
         }
-        public CustomerApplicationModel Get()
+        public async Task<List<CustomerApplicationModel>> Get()
         {
-            return new CustomerApplicationModel();
+            HttpRequestMessage requestMessage = new HttpRequestMessage(HttpMethod.Get, $"{apiBaseUrl}/CustomerApplication");
+            var responseMessage = await client.SendAsync(requestMessage);
+            if(responseMessage.IsSuccessStatusCode)
+            {
+                var response = await responseMessage.Content.ReadAsStringAsync();
+                var application = JsonSerializer.Deserialize<List<CustomerApplicationModel>>(response, new JsonSerializerOptions()
+                {
+                    PropertyNameCaseInsensitive = true
+                });
+                return application;
+            }
+            return null;
         }
 
         public CustomerApplicationModel Get(string customerId)

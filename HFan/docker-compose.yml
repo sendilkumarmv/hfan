@@ -6,3 +6,11 @@ services:
     build:
       context: .
       dockerfile: HFan.Web.Application/Dockerfile
+
+  hfan.web:
+    image: ${DOCKER_REGISTRY-}hfanweb
+    build:
+      context: .
+      dockerfile: HFAN.Web/Dockerfile
+    depends_on:
+      - hfan.web.application
