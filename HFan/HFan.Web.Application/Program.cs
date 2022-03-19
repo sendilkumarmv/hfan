@@ -8,8 +8,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(opt => opt.OperationFilter<AddRequiredHeaderParameter>());
+builder.Services.AddSwaggerGen(); // opt => opt.OperationFilter<AddRequiredHeaderParameter>());
 builder.Services.AddSingleton<IPublishApplication, PublishApplication>();
+builder.Services.AddScoped<ICustomerApplicationHandler, CustomerApplicationHandler>();
 
 var app = builder.Build();
 

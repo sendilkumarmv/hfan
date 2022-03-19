@@ -11,23 +11,31 @@ namespace HFan.Web.Application.Controllers
     public class CustomerApplicationController : ControllerBase
     {
         private readonly IPublishApplication _publishApplication;
-        public CustomerApplicationController(IPublishApplication publishApplication)
+        private readonly ICustomerApplicationHandler _customerApplicationHandler;
+        public CustomerApplicationController(
+            IPublishApplication publishApplication,
+            ICustomerApplicationHandler customerApplicationHandler
+        )
         {
             _publishApplication = publishApplication;
+            _customerApplicationHandler = customerApplicationHandler;   
         }
 
         // GET: api/<ApplicationController>
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public IEnumerable<CustomerApplication> Get()
         {
-            return new List<CustomerApplication>(); 
+            return _customerApplicationHandler.GetCustomerApplications();
         }
 
         // GET api/<ApplicationController>/5
         [HttpGet("{id}")]
-        public CustomerApplication Get(int id)
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public CustomerApplication? Get(int id)
         {
-            return new CustomerApplication();
+            return null;
         }
 
         // POST api/<ApplicationController>

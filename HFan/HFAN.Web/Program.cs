@@ -1,7 +1,13 @@
+using HFAN.Web;
+using HFAN.Web.ServiceClients;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddHttpClient<ICustomerApplicationService, CustomerApplicationService>();
+builder.Services.Configure<Settings>(builder.Configuration.GetSection("Settings"));
+
 
 var app = builder.Build();
 

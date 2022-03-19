@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  hfan.web.application:
+    image: ${DOCKER_REGISTRY-}hfanwebapplication
+    build:
+      context: .
+      dockerfile: HFan.Web.Application/Dockerfile
